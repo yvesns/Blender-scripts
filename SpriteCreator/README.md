@@ -1,0 +1,1 @@
+Configurable isometric sprite creator from a model.

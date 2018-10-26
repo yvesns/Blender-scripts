@@ -4,7 +4,6 @@ import numpy
 
 outputDirectory = bpy.data.scenes["Scene"].render.filepath
 baseSpriteName = "Sprite"
-cameraBlendFile = "SpriteCreatorCamera.blend"
 
 #Circle settings
 circleName = "SpriteCreatorCircle"
@@ -29,11 +28,7 @@ directionsLeft = {
 	"NW": math.radians(135)
 }
 
-importCameraSetup = True
-importAppending = True
 createCameraSetup = True
-
-setupRender = True
 mirrorSprites = True
 
 def start():

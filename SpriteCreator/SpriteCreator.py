@@ -52,6 +52,8 @@ def start():
 			circle.rotation_euler = (0, 0, rotation)
 			bpy.data.scenes["Scene"].render.filepath = outputDirectory + baseSpriteName + direction
 			bpy.ops.render.render(write_still = True)
+			
+	bpy.data.scenes["Scene"].render.filepath = outputDirectory
 		
 def createCircle():
 	bpy.ops.mesh.primitive_circle_add(radius=circleRadius, fill_type='NOTHING', location=[0, 0, circleHeight])

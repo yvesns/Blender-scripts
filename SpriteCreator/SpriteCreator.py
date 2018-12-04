@@ -42,14 +42,24 @@ def start():
 		if camera is None:
 			camera = createCamera(circle)
 			
+	for obj in bpy.context.scene.objects:
+		obj.select = False
+	
+	for obj in bpy.context.visible_objects:
+		if not (obj.hide or obj.hide_render):
+			if (obj != circle and obj != camera):
+				obj.select = True
+			
 	for direction, rotation in directionsRight.items():
 		circle.rotation_euler = (0, 0, rotation)
+		bpy.ops.view3d.camera_to_view_selected()
 		bpy.data.scenes["Scene"].render.filepath = outputDirectory + baseSpriteName + direction
 		bpy.ops.render.render(write_still = True)
 	
 	if not mirrorSprites:
 		for direction, rotation in directionsLeft.items():
 			circle.rotation_euler = (0, 0, rotation)
+			bpy.ops.view3d.camera_to_view_selected()
 			bpy.data.scenes["Scene"].render.filepath = outputDirectory + baseSpriteName + direction
 			bpy.ops.render.render(write_still = True)
 			
